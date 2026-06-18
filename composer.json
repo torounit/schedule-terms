@@ -1,10 +1,10 @@
 {
-	"name": "hamworks/schedule-terms",
+	"name": "torounit/schedule-terms",
 	"license": "GPL-2.0-or-later",
 	"authors": [
 		{
 			"name": "Hiroshi Urabe",
-			"email": "urabe@ham.works"
+			"email": "mail@torounit.com"
 		}
 	],
 	"require": {

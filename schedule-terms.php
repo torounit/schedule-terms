@@ -1,10 +1,10 @@
 <?php
 /**
  * Plugin Name:     Schedule Terms
- * Plugin URI:      https://github.com/hamworks/schedule-terms
+ * Plugin URI:      https://github.com/torounit/schedule-terms
  * Description:     Automatically set and unset the term when the time is up.
  * Author:          Toro_Unit, HAMWORKS
- * Author URI:      https://ham.works
+ * Author URI:      https://torounit.com/
  * License:         GPLv2 or later
  * License URI:     https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:     schedule-terms
