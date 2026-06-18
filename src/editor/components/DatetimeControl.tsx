@@ -3,6 +3,7 @@ import { useEntityProp } from '@wordpress/core-data';
 import { useRef } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { closeSmall } from '@wordpress/icons';
+/* eslint-disable @wordpress/no-unsafe-wp-apis */
 import {
 	Button,
 	DateTimePicker,
@@ -12,6 +13,7 @@ import {
 	__experimentalHeading as Heading,
 	__experimentalSpacer as Spacer,
 } from '@wordpress/components';
+/* eslint-enable @wordpress/no-unsafe-wp-apis */
 import { dateI18n, getSettings } from '@wordpress/date';
 // @ts-ignore
 import moment from 'moment';

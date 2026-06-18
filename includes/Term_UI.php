@@ -107,7 +107,7 @@ class Term_UI extends UI {
 			type="checkbox"
 			name="term-<?php echo esc_attr( $this->meta_key ); ?>"
 			id="term-<?php echo esc_attr( $this->meta_key ); ?>"
-			<?php checked( ! ! $value, true, true ); ?>
+			<?php checked( (bool) $value, true, true ); ?>
 		/>
 		<label for="term-<?php echo esc_attr( $this->meta_key ); ?>">
 			<?php esc_html_e( 'Use automatic term attach / detach.', 'schedule-posts' ); ?>

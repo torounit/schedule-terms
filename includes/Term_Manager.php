@@ -66,7 +66,7 @@ class Term_Manager {
 			return false;
 		}
 
-		return ! ! get_term_meta( $term->term_id, $this->term_meta_key, true );
+		return (bool) get_term_meta( $term->term_id, $this->term_meta_key, true );
 	}
 
 	/**
