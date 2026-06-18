@@ -6,7 +6,9 @@
 	"license": "GPL-2.0+",
 	"scripts": {
 		"wp-env": "wp-env",
-		"test-unit-php": "wp-env run cli --env-cwd='/var/www/html/wp-content/plugins/schedule-terms' composer test",
+		"test:php": "npm run test:php:setup && npm run test:php:base",
+		"test:php:setup": "wp-env --config=.wp-env.test.json start",
+		"test:php:base": "wp-env --config=.wp-env.test.json run --env-cwd='wp-content/plugins/schedule-terms' wordpress vendor/bin/phpunit -c phpunit.xml.dist",
 		"packages-update": "wp-scripts packages-update",
 		"lint-php": "./vendor/bin/phpcs --standard=./phpcs.xml.dist --warning-severity=6",
 		"test": "wp-scripts test-unit-js",
@@ -22,10 +24,10 @@
 		"url": "https://github.com/team-hamworks/schedule-terms.git"
 	},
 	"devDependencies": {
-		"@wordpress/scripts": "^27.3.0",
-		"@wordpress/env": "^9.4.0",
-		"husky": "^9.0.11",
-		"lint-staged": "^15.2.2"
+		"@wordpress/scripts": "^32.4.1",
+		"@wordpress/env": "^11.8.1",
+		"husky": "^9.1.7",
+		"lint-staged": "^17.0.7"
 	},
 	"lint-staged": {
 		"*.js": [
@@ -57,18 +59,18 @@
 		}
 	},
 	"dependencies": {
-		"@types/wordpress__components": "^23.0.11",
-		"@types/wordpress__core-data": "^2.4.5",
-		"@types/wordpress__data": "^6.0.2",
-		"@types/wordpress__edit-post": "^7.5.6",
-		"@types/wordpress__editor": "^13.6.7",
-		"@types/wordpress__plugins": "^3.0.3",
-		"@wordpress/components": "^27.0.0",
-		"@wordpress/core-data": "^6.29.0",
-		"@wordpress/data": "^9.22.0",
-		"@wordpress/edit-post": "^7.29.0",
-		"@wordpress/editor": "^13.29.0",
-		"@wordpress/plugins": "^6.20.0",
-		"wp-types": "^3.64.0"
+		"@types/wordpress__components": "^23.8.0",
+		"@types/wordpress__core-data": "^5.0.0",
+		"@types/wordpress__data": "^7.0.0",
+		"@types/wordpress__edit-post": "^8.4.2",
+		"@types/wordpress__editor": "^14.12.0",
+		"@types/wordpress__plugins": "^6.0.0",
+		"@wordpress/components": "^35.0.1",
+		"@wordpress/core-data": "^7.48.1",
+		"@wordpress/data": "^10.48.1",
+		"@wordpress/edit-post": "^8.48.1",
+		"@wordpress/editor": "^14.48.1",
+		"@wordpress/plugins": "^7.48.1",
+		"wp-types": "^4.70.1"
 	}
 }

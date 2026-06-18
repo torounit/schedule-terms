@@ -45,7 +45,7 @@ jobs:
               run: npm run lint-php
 
             - name: Running single site unit tests
-              run: npm run test-unit-php
+              run: npm run test:php
               if: ${{ success() || failure() }}
 
     release:
