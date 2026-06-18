@@ -1,11 +1,11 @@
 import { registerPlugin } from '@wordpress/plugins';
 import { useSelect } from '@wordpress/data';
 // @ts-ignore
-import { store as coreStore, useEntityProp } from '@wordpress/core-data';
+import { store as coreStore } from '@wordpress/core-data';
 // @ts-ignore
 import { store as editorStore } from '@wordpress/editor';
 import { PluginDocumentSettingPanel } from '@wordpress/edit-post';
-import type { WP_Taxonomy_Name } from 'wp-types';
+import type { WP_Taxonomy_Name as WPTaxonomyName } from 'wp-types';
 import { DatetimeControl } from './components/DatetimeControl';
 import { __ } from '@wordpress/i18n';
 
@@ -15,7 +15,7 @@ interface Term {
 	slug: string;
 	term_group: number;
 	term_taxonomy_id: number;
-	taxonomy: WP_Taxonomy_Name | string;
+	taxonomy: WPTaxonomyName | string;
 	description: string;
 	parent: number;
 	count: number;
@@ -79,15 +79,19 @@ const PluginDocumentSetting = () => {
 		) as Taxonomy[];
 		const _terms = Object.fromEntries(
 			_taxonomies.map( ( taxonomy ) => {
-				const terms = getEntityRecords( 'taxonomy', taxonomy.slug, {
-					per_page: -1,
-				} )?.filter(
+				const taxonomyTerms = getEntityRecords(
+					'taxonomy',
+					taxonomy.slug,
+					{
+						per_page: -1,
+					}
+				)?.filter(
 					(
 						// @ts-ignore
-						{ meta: { schedule_terms_active } }
-					) => schedule_terms_active
+						{ meta: { schedule_terms_active: scheduleTermsActive } }
+					) => scheduleTermsActive
 				);
-				return [ taxonomy.slug, terms as Term[] ];
+				return [ taxonomy.slug, taxonomyTerms as Term[] ];
 			} )
 		);
 
