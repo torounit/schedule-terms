@@ -42,19 +42,10 @@
 	},
 	"release-it": {
 		"hooks": {
-			"before:bump": [
-				"composer install --optimize-autoloader --prefer-dist --no-dev",
-				"bash ./bin/create-release.sh schedule-terms ${version}",
-				"bash ./bin/create-zip.sh schedule-terms"
-			],
-			"after:bump": "composer install --optimize-autoloader --prefer-dist",
-			"after:release": "bash ./bin/cleanup.sh schedule-terms"
+			"before:bump": "bash ./bin/bump-version.sh ${version}"
 		},
 		"github": {
-			"release": true,
-			"assets": [
-				"schedule-terms.zip"
-			]
+			"release": true
 		},
 		"npm": {
 			"publish": false
