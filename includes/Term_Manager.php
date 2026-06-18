@@ -45,7 +45,7 @@ class Term_Manager {
 	 * @param string   $term_meta_key Term meta key.
 	 * @param int|null $time timestamp.
 	 */
-	public function __construct( string $post_meta_key, string $term_meta_key, int $time = null ) {
+	public function __construct( string $post_meta_key, string $term_meta_key, ?int $time = null ) {
 		$this->post_meta_key = $post_meta_key;
 		$this->term_meta_key = $term_meta_key;
 		$this->time          = $time ?? time();
