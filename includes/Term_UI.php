@@ -111,7 +111,7 @@ class Term_UI extends UI {
 				id="term-<?php echo esc_attr( $this->meta_key ); ?>"
 				<?php checked( (bool) $value, true, true ); ?>
 			/>
-			<?php esc_html_e( 'Use automatic term attach / detach.', 'schedule-posts' ); ?>
+			<?php esc_html_e( 'Automatically attach or detach this term on schedule.', 'schedule-posts' ); ?>
 		</label>
 		<?php
 	}
@@ -122,7 +122,7 @@ class Term_UI extends UI {
 	protected function quick_edit_form_field() {
 		?>
 		<input type="checkbox" name="term-<?php echo esc_attr( $this->meta_key ); ?>">
-		<?php esc_html_e( 'Use automatic term attach / detach.', 'schedule-posts' ); ?>
+		<?php esc_html_e( 'Automatically attach or detach this term on schedule.', 'schedule-posts' ); ?>
 		<?php
 	}
 }
