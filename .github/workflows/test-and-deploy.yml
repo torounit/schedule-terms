@@ -1,0 +1,143 @@
+name: Test and Deploy
+on:
+    pull_request:
+        paths-ignore:
+            - '**.md'
+    push:
+        branches: [main]
+        tags: ['*']
+        paths-ignore:
+            - '**.md'
+
+jobs:
+    lint-js:
+        name: Lint JS
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: lts/*
+                  cache: npm
+
+            - name: Install Node dependencies
+              run: npm ci
+
+            - name: Run JS lint
+              run: npm run lint-js
+
+    typecheck:
+        name: Type Check
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: lts/*
+                  cache: npm
+
+            - name: Install Node dependencies
+              run: npm ci
+
+            - name: Run type check
+              run: npm run lint:type
+
+    lint-php:
+        name: Lint PHP
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Setup PHP
+              uses: shivammathur/setup-php@v2
+              with:
+                  php-version: '8.2'
+
+            - name: Install Composer dependencies
+              run: composer install --no-progress --no-interaction
+
+            - name: Run PHP lint
+              run: composer lint
+
+    phpunit:
+        name: PHPUnit (PHP ${{ matrix.php }} / WP ${{ matrix.wp }})
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                php: ['8.2', '8.4']
+                wp: ['6.7', 'latest']
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: lts/*
+                  cache: npm
+
+            - name: Setup PHP
+              uses: shivammathur/setup-php@v2
+              with:
+                  php-version: ${{ matrix.php }}
+
+            - name: Install Node dependencies
+              run: npm ci
+
+            - name: Install Composer dependencies
+              run: composer install --no-progress --no-interaction
+
+            - name: Run PHPUnit
+              run: npm run test:php
+              env:
+                  WP_ENV_PHP_VERSION: ${{ matrix.php }}
+                  WP_ENV_CORE: ${{ matrix.wp == 'latest' && '' || format('WordPress/WordPress#{0}', matrix.wp) }}
+
+    release:
+        name: Upload Release Asset
+        needs: [lint-js, typecheck, lint-php, phpunit]
+        if: startsWith(github.ref, 'refs/tags/')
+        runs-on: ubuntu-latest
+        permissions:
+            attestations: write
+            id-token: write
+            contents: write
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: lts/*
+                  cache: npm
+
+            - name: Setup PHP
+              uses: shivammathur/setup-php@v2
+              with:
+                  php-version: '8.2'
+
+            - name: Install Node dependencies and build
+              run: npm ci && npm run build
+
+            - name: Install Composer production dependencies
+              run: composer install --no-dev --no-progress --no-interaction --optimize-autoloader
+
+            - name: WordPress Plugin Deploy
+              uses: 10up/action-wordpress-plugin-deploy@stable
+              with:
+                  generate-zip: true
+              env:
+                  SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+                  SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+                  SLUG: schedule-terms
+
+            - name: Upload release asset
+              uses: softprops/action-gh-release@v2
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              with:
+                  files: ${{ github.workspace }}/${{ github.event.repository.name }}.zip
