@@ -414,11 +414,11 @@ abstract class UI {
 	/**
 	 * Output the form field
 	 *
-	 * @param WP_Term $term term object.
+	 * @param WP_Term|null $term term object.
 	 *
 	 * @since 2.0.0
 	 */
-	protected function form_field( WP_Term $term ) {
+	protected function form_field( ?WP_Term $term = null ) {
 
 		// Get the meta value.
 		$value = isset( $term->term_id )
