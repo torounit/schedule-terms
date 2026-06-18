@@ -52,12 +52,10 @@
 		}
 	},
 	"dependencies": {
-		"@types/wordpress__edit-post": "^8.4.2",
 		"@wordpress/components": "^35.0.1",
 		"@wordpress/core-data": "^7.48.1",
 		"@wordpress/data": "^10.48.1",
 		"@wordpress/date": "^5.48.1",
-		"@wordpress/edit-post": "^8.48.1",
 		"@wordpress/editor": "^14.48.1",
 		"@wordpress/element": "^6.46.0",
 		"@wordpress/i18n": "^6.21.1",

@@ -3,8 +3,10 @@ import { useSelect } from '@wordpress/data';
 // @ts-ignore
 import { store as coreStore } from '@wordpress/core-data';
 // @ts-ignore
-import { store as editorStore } from '@wordpress/editor';
-import { PluginDocumentSettingPanel } from '@wordpress/edit-post';
+import {
+	store as editorStore,
+	PluginDocumentSettingPanel,
+} from '@wordpress/editor';
 import type { WP_Taxonomy_Name as WPTaxonomyName } from 'wp-types';
 import { DatetimeControl } from './components/DatetimeControl';
 import { __ } from '@wordpress/i18n';
