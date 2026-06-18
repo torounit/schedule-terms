@@ -69,7 +69,7 @@ jobs:
         strategy:
             matrix:
                 php: ['8.2', '8.4']
-                wp: ['6.7', 'latest']
+                wp: ['6.7', '7.0']
         steps:
             - uses: actions/checkout@v4
 
