@@ -5,9 +5,9 @@
  * @package Schedule_Terms
  */
 
-namespace HAMWORKS\WP\Schedule_Terms\Tests;
+namespace Torounit\WP\Schedule_Terms\Tests;
 
-use HAMWORKS\WP\Schedule_Terms\Schedule;
+use Torounit\WP\Schedule_Terms\Schedule;
 use WP_UnitTestCase;
 
 /**

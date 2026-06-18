@@ -5,7 +5,7 @@
  * @package Schedule_Terms
  */
 
-namespace HAMWORKS\WP\Schedule_Terms;
+namespace Torounit\WP\Schedule_Terms;
 
 /**
  * Class used to register style and js.

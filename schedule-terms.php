@@ -14,7 +14,7 @@
  * @package Schedule_Terms
  */
 
-use HAMWORKS\WP\Schedule_Terms\Plugin;
+use Torounit\WP\Schedule_Terms\Plugin;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
