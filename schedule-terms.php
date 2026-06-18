@@ -10,6 +10,8 @@
  * Text Domain:     schedule-terms
  * Domain Path:     /languages
  * Version: 1.3.2
+ * Requires at least: 6.7
+ * Requires PHP:      8.2
  *
  * @package Schedule_Terms
  */

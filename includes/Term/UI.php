@@ -225,13 +225,13 @@ abstract class UI {
 	/**
 	 * Output the value for the custom column
 	 *
-	 * @param string $column_value Custom column output. Default empty.
-	 * @param string $custom_column Name of the column.
-	 * @param int    $term_id Term ID.
+	 * @param string|null $column_value Custom column output. Default empty.
+	 * @param string|null $custom_column Name of the column.
+	 * @param int         $term_id Term ID.
 	 *
 	 * @return string|void
 	 */
-	public function add_column_value( string $column_value = null, string $custom_column = null, int $term_id = 0 ) {
+	public function add_column_value( ?string $column_value = null, ?string $custom_column = null, int $term_id = 0 ) {
 		if ( ! filter_input( INPUT_GET, 'taxonomy' ) && ! filter_input( INPUT_POST, 'taxonomy' ) ) {
 			return $column_value ?? '';
 		}
