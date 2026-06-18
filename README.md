@@ -34,6 +34,7 @@ Check the "use schedule" checkbox in the category or tag management screen. You 
 
 ### Unreleased
 * Tested WordPress 7.0.
+* Drop support for PHP 8.1.
 
 ### 1.3.0
 * Tested WordPress 6.5.
