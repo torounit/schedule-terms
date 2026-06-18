@@ -3,10 +3,10 @@
 		"allowJs": true,
 		"checkJs": true,
 		"skipLibCheck": true,
-		"allowSyntheticDefaultImports": true,
 		"jsx": "preserve",
 		"target": "esnext",
 		"module": "esnext",
+		"moduleResolution": "bundler",
 		"lib": [ "dom", "esnext" ],
 		"noEmit": true,
 		"isolatedModules": true,
@@ -15,13 +15,7 @@
 		"noUnusedParameters": true,
 		"noImplicitReturns": true,
 		"noFallthroughCasesInSwitch": true,
-		"ignoreDeprecations": "5.0",
-		"importsNotUsedAsValues": "error",
-		"moduleResolution": "node",
-		"esModuleInterop": true,
-		"resolveJsonModule": true,
-		"typeRoots": [ "./typings", "./node_modules/@types" ],
-		"types": []
+		"esModuleInterop": true
 	},
 	"include": [ "src/**/*" ]
 }
