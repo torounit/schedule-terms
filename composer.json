@@ -20,9 +20,12 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"HAMWORKS\\WP\\Schedule_Terms\\": "./includes",
-			"HAMWORKS\\WP\\Schedule_Terms\\Tests\\": "./tests/php"
-		}
+			"Torounit\\WP\\Schedule_Terms\\": "./includes",
+			"Torounit\\WP\\Schedule_Terms\\Tests\\": "./tests/php"
+		},
+		"files": [
+			"includes/compat.php"
+		]
 	},
 	"scripts": {
 		"test": "phpunit",

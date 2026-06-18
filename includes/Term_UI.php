@@ -5,9 +5,9 @@
  * @package Schedule_Terms
  */
 
-namespace HAMWORKS\WP\Schedule_Terms;
+namespace Torounit\WP\Schedule_Terms;
 
-use HAMWORKS\WP\Schedule_Terms\Term\UI;
+use Torounit\WP\Schedule_Terms\Term\UI;
 
 /**
  * Term meta UI controller.

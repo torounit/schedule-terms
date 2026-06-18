@@ -6,7 +6,7 @@
  * @see https://github.com/JJJ/wp-term-meta-ui/blob/master/class-wp-term-meta-ui.php
  */
 
-namespace HAMWORKS\WP\Schedule_Terms\Term;
+namespace Torounit\WP\Schedule_Terms\Term;
 
 use WP_Taxonomy;
 use WP_Term;

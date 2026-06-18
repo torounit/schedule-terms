@@ -57,6 +57,7 @@ Yes, scheduling can be enabled for any taxonomy that is shown in the admin UI (`
 ### Unreleased
 * Tested WordPress 7.0.
 * Drop support for PHP 8.1.
+* Renamed the internal PHP namespace from `HAMWORKS\WP\Schedule_Terms` to `Torounit\WP\Schedule_Terms` (old class names are aliased for backward compatibility and will be removed in a future major release).
 
 ### 1.3.0
 * Tested WordPress 6.5.
