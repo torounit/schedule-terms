@@ -16,7 +16,7 @@
 	<arg name="colors"/>
 
 	<!-- Rules: Check PHP version compatibility -->
-	<config name="testVersion" value="7.2-"/>
+	<config name="testVersion" value="8.2-"/>
 	<config name="minimum_supported_wp_version" value="5.9"/>
 	<rule ref="PHPCompatibilityWP"/>
 	<rule ref="WordPress">
