@@ -1,6 +1,6 @@
 {
 	"name": "@torounit/schedule-terms",
-	"version": "2.0.0",
+	"version": "2.0.1",
 	"private": true,
 	"author": "Hiroshi Urabe <mail@torounit.com> (https://torounit.com)",
 	"license": "GPL-2.0+",
