@@ -9,7 +9,7 @@ import {
 } from '@wordpress/editor';
 import type { WP_Taxonomy_Name as WPTaxonomyName } from 'wp-types';
 import { DatetimeControl } from './components/DatetimeControl';
-import { __ } from '@wordpress/i18n';
+import { __, _x } from '@wordpress/i18n';
 
 interface Term {
 	id: number;
@@ -48,14 +48,22 @@ const ControlUI = ( { taxonomies, terms, currentPostType }: Props ) => {
 									{ taxonomy.name }: { term.name }
 								</h4>
 								<DatetimeControl
-									label={ __( 'Attach', 'schedule-terms' ) }
+									label={ _x(
+										'Add',
+										'Schedule a term to be added to the post',
+										'schedule-terms'
+									) }
 									term={ term.slug }
 									taxonomy={ taxonomy.slug }
 									type="attach"
 									postType={ currentPostType }
 								/>
 								<DatetimeControl
-									label={ __( 'Detach', 'schedule-terms' ) }
+									label={ _x(
+										'Remove',
+										'Schedule a term to be removed from the post',
+										'schedule-terms'
+									) }
 									term={ term.slug }
 									taxonomy={ taxonomy.slug }
 									type="detach"

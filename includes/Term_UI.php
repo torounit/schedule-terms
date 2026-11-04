@@ -43,11 +43,19 @@ class Term_UI extends UI {
 	 */
 	public function __construct( $file, string $meta_key ) {
 		$this->meta_key = $meta_key;
-		$this->labels   = array(
-			'singular' => esc_html__( 'Enable scheduling', 'schedule-posts' ),
-		);
 
 		parent::__construct( $file );
+	}
+
+	/**
+	 * Set the labels here, not in the constructor: translations must not be loaded before `init`.
+	 */
+	public function initialize() {
+		$this->labels = array(
+			'singular' => esc_html__( 'Scheduling', 'schedule-terms' ),
+		);
+
+		parent::initialize();
 	}
 
 	/**
@@ -79,7 +87,7 @@ class Term_UI extends UI {
 		ob_start();
 		if ( $meta ) {
 			?>
-			<span data-schedule-terms-active><?php esc_html_e( 'Scheduling', 'schedule-posts' ); ?></span>
+			<span data-schedule-terms-active><?php esc_html_e( 'Enabled', 'schedule-terms' ); ?></span>
 			<?php
 		}
 		$contents = ob_get_contents();
@@ -111,7 +119,7 @@ class Term_UI extends UI {
 				id="term-<?php echo esc_attr( $this->meta_key ); ?>"
 				<?php checked( (bool) $value, true, true ); ?>
 			/>
-			<?php esc_html_e( 'Automatically attach or detach this term on schedule.', 'schedule-posts' ); ?>
+			<?php esc_html_e( 'Allow this term to be added to or removed from posts on a schedule.', 'schedule-terms' ); ?>
 		</label>
 		<?php
 	}
@@ -122,7 +130,7 @@ class Term_UI extends UI {
 	protected function quick_edit_form_field() {
 		?>
 		<input type="checkbox" name="term-<?php echo esc_attr( $this->meta_key ); ?>">
-		<?php esc_html_e( 'Automatically attach or detach this term on schedule.', 'schedule-posts' ); ?>
+		<?php esc_html_e( 'Allow this term to be added to or removed from posts on a schedule.', 'schedule-terms' ); ?>
 		<?php
 	}
 }
