@@ -153,7 +153,7 @@ export const DatetimeControl = ( {
 										`${ siteFormat } ${ siteTimeFormat }`,
 										datetime
 									)
-								: __( 'none', 'schedule-terms' ) }
+								: __( 'Not scheduled', 'schedule-terms' ) }
 						</Button>
 					</>
 				) }

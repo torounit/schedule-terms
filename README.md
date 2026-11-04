@@ -22,14 +22,14 @@ It's useful for things like:
 * Adding a "New" tag to a post for a limited time after publishing.
 * Hiding a post from a "Featured" listing taxonomy once a promotion ends.
 
-Once scheduling is enabled for a taxonomy, a "Schedule Terms" panel appears in the post editor for every term in that taxonomy, with separate "Attach" and "Detach" date/time fields. WordPress' own cron system checks the schedule and updates the post's terms automatically when the time arrives, so there's nothing else to do once a schedule is set.
+Once scheduling is enabled for a term, the "Schedule Terms" panel in the post editor shows that term with separate "Add" and "Remove" date/time fields. WordPress' own cron system checks the schedule and updates the post's terms automatically when the time arrives, so there's nothing else to do once a schedule is set.
 
 ### Usage
 
 1. Go to the category, tag, or custom taxonomy management screen.
-2. Check the "Enable scheduling" checkbox when adding or editing a term (or via Quick Edit) to turn scheduling on for that term.
+2. When adding or editing a term (or via Quick Edit), check "Allow this term to be added to or removed from posts on a schedule." under "Scheduling".
 3. Open a post in the block editor and find the "Schedule Terms" panel in the document sidebar.
-4. Set the "Attach" date/time to have the term automatically added to the post at that time, and/or the "Detach" date/time to have it automatically removed.
+4. Set the "Add" date/time to have the term automatically added to the post at that time, and/or the "Remove" date/time to have it automatically removed.
 5. Save or update the post. The term will be attached/detached automatically once the scheduled time passes.
 
 ### FAQ
@@ -38,7 +38,7 @@ Once scheduling is enabled for a taxonomy, a "Schedule Terms" panel appears in t
 
 Yes. Scheduling is handled by WordPress cron, so the post doesn't need to be opened or saved again after the schedule is set.
 
-**What happens if I leave both the "Attach" and "Detach" fields empty?**
+**What happens if I leave both the "Add" and "Remove" fields empty?**
 
 Nothing is scheduled for that term on that post; the term is only added or removed when you do so manually, as usual.
 
@@ -59,6 +59,8 @@ Yes, scheduling can be enabled for any taxonomy that is shown in the admin UI (`
 * Update dependencies.
 * Requires WordPress 6.8 or later.
 * Tested up to WordPress 7.1.
+* Improve the wording of the admin UI: the post editor now uses "Add" and "Remove" instead of "Attach" and "Detach".
+* Fix the text domain of the term screen strings so that they can be translated.
 
 ### 2.0.0
 * Tested WordPress 7.0.
