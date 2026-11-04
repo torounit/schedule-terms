@@ -3,7 +3,7 @@
 Contributors:      Toro_Unit,hamworks  
 Donate link:       https://www.paypal.me/torounit  
 Tags:              schedule, term  
-Requires at least: 6.7  
+Requires at least: 6.8  
 Tested up to:      7.1  
 Requires PHP:      8.2  
 Stable tag:        2.0.1  
@@ -56,6 +56,7 @@ Yes, scheduling can be enabled for any taxonomy that is shown in the admin UI (`
 
 ### Unreleased
 
+* Requires WordPress 6.8 or later.
 * Tested up to WordPress 7.1.
 
 ### 2.0.0
