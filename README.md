@@ -3,10 +3,10 @@
 Contributors:      Toro_Unit,hamworks  
 Donate link:       https://www.paypal.me/torounit  
 Tags:              schedule, term  
-Requires at least: 6.7  
-Tested up to:      7.0  
+Requires at least: 6.8  
+Tested up to:      7.1  
 Requires PHP:      8.2  
-Stable tag:        1.3.2  
+Stable tag:        2.0.1  
 License:           GPLv2 or later  
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -55,6 +55,12 @@ Yes, scheduling can be enabled for any taxonomy that is shown in the admin UI (`
 ## Changelog
 
 ### Unreleased
+
+* Update dependencies.
+* Requires WordPress 6.8 or later.
+* Tested up to WordPress 7.1.
+
+### 2.0.0
 * Tested WordPress 7.0.
 * Drop support for PHP 8.1.
 * Renamed the internal PHP namespace from `HAMWORKS\WP\Schedule_Terms` to `Torounit\WP\Schedule_Terms` (old class names are aliased for backward compatibility and will be removed in a future major release).

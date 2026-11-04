@@ -1,0 +1,81 @@
+name: Release
+on:
+    release:
+        types: [published]
+
+jobs:
+    # Catches a release created by hand, or a draft whose tag was edited.
+    check-version:
+        name: Check Version
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v7
+
+            - name: Check the tag matches the versions in the files
+              env:
+                  TAG: ${{ github.event.release.tag_name }}
+              run: bin/check-version.sh "$TAG"
+
+    lint:
+        name: Lint
+        needs: check-version
+        uses: ./.github/workflows/lint.yml
+
+    test:
+        name: Test
+        needs: check-version
+        uses: ./.github/workflows/test.yml
+
+    release:
+        name: Upload Release Asset
+        needs: [check-version, lint, test]
+        runs-on: ubuntu-latest
+        permissions:
+            attestations: write
+            id-token: write
+            contents: write
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v7
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v7
+              with:
+                  node-version-file: .node-version
+                  cache: npm
+
+            # Blocks malicious npm packages: npm and npx run through Aikido Safe Chain from here on.
+            - name: Install Aikido Safe Chain
+              run: |
+                  curl -fsSL https://github.com/AikidoSec/safe-chain/releases/download/1.5.27/install-safe-chain.sh -o /tmp/install-safe-chain.sh
+                  echo "600ebddcb3aaf1fd53653a8d7985df44528722c0f5ee7eb9fff86f26a1a4e5a8  /tmp/install-safe-chain.sh" | sha256sum -c -
+                  sh /tmp/install-safe-chain.sh --ci
+                  rm /tmp/install-safe-chain.sh
+
+            - name: Setup PHP
+              uses: shivammathur/setup-php@v2
+              with:
+                  php-version: '8.2'
+
+            - name: Install Node dependencies and build
+              run: npm ci && npm run build
+
+            - name: Install Composer production dependencies
+              run: composer install --no-dev --no-progress --no-interaction --optimize-autoloader
+
+            - name: WordPress Plugin Deploy
+              uses: 10up/action-wordpress-plugin-deploy@stable
+              with:
+                  generate-zip: true
+              env:
+                  SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+                  SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+                  SLUG: schedule-terms
+
+            - name: Upload release asset
+              uses: softprops/action-gh-release@v3
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              with:
+                  files: ${{ github.workspace }}/${{ github.event.repository.name }}.zip
