@@ -4,7 +4,7 @@ Contributors:      Toro_Unit,hamworks
 Donate link:       https://www.paypal.me/torounit  
 Tags:              schedule, term  
 Requires at least: 6.7  
-Tested up to:      7.0  
+Tested up to:      7.1  
 Requires PHP:      8.2  
 Stable tag:        2.0.1  
 License:           GPLv2 or later  
@@ -53,6 +53,10 @@ Yes, scheduling can be enabled for any taxonomy that is shown in the admin UI (`
 3. Set datetime in "Schedule Terms" panel.
 
 ## Changelog
+
+### Unreleased
+
+* Tested up to WordPress 7.1.
 
 ### 2.0.0
 * Tested WordPress 7.0.
