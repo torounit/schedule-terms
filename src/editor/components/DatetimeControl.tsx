@@ -65,7 +65,7 @@ export const DatetimeControl = ( {
 		'root',
 		'site',
 		'time_format'
-	);
+	) as [ string | undefined ];
 
 	const is12HourTime = /a(?!\\)/i.test(
 		siteTimeFormat
@@ -111,7 +111,7 @@ export const DatetimeControl = ( {
 							)
 								.utc()
 								.format(),
-					  }
+						}
 					: null,
 			].filter( ( e ): e is ScheduleTermsMeta => e !== null ),
 		} );
@@ -153,10 +153,10 @@ export const DatetimeControl = ( {
 						>
 							{ datetime
 								? // @ts-ignore
-								  dateI18n(
+									dateI18n(
 										`${ siteFormat } ${ siteTimeFormat }`,
 										datetime
-								  )
+									)
 								: __( 'none', 'schedule-terms' ) }
 						</Button>
 					</>
