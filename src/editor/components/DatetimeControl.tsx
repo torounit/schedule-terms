@@ -15,6 +15,7 @@ import { dateI18n, getSettings } from '@wordpress/date';
 import moment from 'moment';
 
 const TIMEZONELESS_FORMAT = 'YYYY-MM-DDTHH:mm:ss';
+const TIMEZONED_FORMAT = 'YYYY-MM-DDTHH:mm:ssZ';
 
 interface DatetimeControlProps {
 	label: string;
@@ -151,7 +152,8 @@ export const DatetimeControl = ( {
 								? // @ts-ignore
 									dateI18n(
 										`${ siteFormat } ${ siteTimeFormat }`,
-										datetime
+										// dateI18n reads a value without an offset in the browser's timezone.
+										getDatetime( TIMEZONED_FORMAT )
 									)
 								: __( 'none', 'schedule-terms' ) }
 						</Button>

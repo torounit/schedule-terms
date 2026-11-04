@@ -56,6 +56,7 @@ Yes, scheduling can be enabled for any taxonomy that is shown in the admin UI (`
 
 ### Unreleased
 
+* Fix the scheduled time shown in the post editor when the browser and the site are in different timezones.
 * Update dependencies.
 * Requires WordPress 6.8 or later.
 * Tested up to WordPress 7.1.
