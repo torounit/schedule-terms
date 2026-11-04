@@ -3,17 +3,13 @@ import { useEntityProp } from '@wordpress/core-data';
 import { useRef } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { closeSmall } from '@wordpress/icons';
-/* eslint-disable @wordpress/no-unsafe-wp-apis */
 import {
 	Button,
 	DateTimePicker,
 	Dropdown,
 	PanelRow,
-	__experimentalHStack as HStack,
-	__experimentalHeading as Heading,
-	__experimentalSpacer as Spacer,
 } from '@wordpress/components';
-/* eslint-enable @wordpress/no-unsafe-wp-apis */
+import { Stack, Text } from '@wordpress/ui';
 import { dateI18n, getSettings } from '@wordpress/date';
 // @ts-ignore
 import moment from 'moment';
@@ -164,19 +160,21 @@ export const DatetimeControl = ( {
 				renderContent={ ( { onClose } ) => (
 					<div style={ { padding: 8 } }>
 						<div style={ { marginBottom: '1em' } }>
-							<HStack>
-								{ /* @ts-ignore */ }
-								<Heading level={ 2 } size={ 13 }>
+							<Stack
+								direction="row"
+								justify="space-between"
+								align="center"
+							>
+								<Text variant="heading-sm" render={ <h2 /> }>
 									{ label }
-								</Heading>
-								<Spacer />
+								</Text>
 								<Button
 									className="block-editor-inspector-popover-header__action"
 									label={ __( 'Close' ) }
 									icon={ closeSmall }
 									onClick={ onClose }
 								/>
-							</HStack>
+							</Stack>
 						</div>
 
 						<DateTimePicker

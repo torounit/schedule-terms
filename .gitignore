@@ -14,3 +14,4 @@ build
 /vendor/
 *.tsbuildinfo
 .phpunit.result.cache
+.playwright-mcp/

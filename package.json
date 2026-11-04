@@ -52,6 +52,7 @@
 		"@wordpress/i18n": "^7.0.0",
 		"@wordpress/icons": "^19.0.0",
 		"@wordpress/plugins": "^8.0.0",
+		"@wordpress/ui": "^0.25.0",
 		"moment": "^2.31.0",
 		"wp-types": "^4.71.0"
 	}
