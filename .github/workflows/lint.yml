@@ -1,0 +1,64 @@
+name: Lint
+on:
+    pull_request:
+        paths-ignore:
+            - '**.md'
+    push:
+        branches: [main]
+        paths-ignore:
+            - '**.md'
+    workflow_call:
+
+jobs:
+    lint-js:
+        name: Lint JS
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v7
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v7
+              with:
+                  node-version: lts/*
+                  cache: npm
+
+            - name: Install Node dependencies
+              run: npm ci
+
+            - name: Run JS lint
+              run: npm run lint-js
+
+    typecheck:
+        name: Type Check
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v7
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v7
+              with:
+                  node-version: lts/*
+                  cache: npm
+
+            - name: Install Node dependencies
+              run: npm ci
+
+            - name: Run type check
+              run: npm run lint:type
+
+    lint-php:
+        name: Lint PHP
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v7
+
+            - name: Setup PHP
+              uses: shivammathur/setup-php@v2
+              with:
+                  php-version: '8.2'
+
+            - name: Install Composer dependencies
+              run: composer install --no-progress --no-interaction
+
+            - name: Run PHP lint
+              run: composer lint

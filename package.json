@@ -18,8 +18,7 @@
 		"lint-js": "wp-scripts lint-js",
 		"lint-js:fix": "wp-scripts lint-js --fix",
 		"lint:type": "tsc",
-		"prepare": "husky install",
-		"release": "release-it"
+		"prepare": "husky install"
 	},
 	"repository": {
 		"type": "git",
@@ -30,7 +29,6 @@
 		"@wordpress/env": "^11.8.1",
 		"husky": "^9.1.7",
 		"lint-staged": "^17.0.7",
-		"release-it": "^20.2.0",
 		"typescript": "^5.4.2"
 	},
 	"lint-staged": {
@@ -41,17 +39,6 @@
 		"*.php": [
 			"npm run lint-php"
 		]
-	},
-	"release-it": {
-		"hooks": {
-			"before:bump": "bash ./bin/bump-version.sh ${version}"
-		},
-		"github": {
-			"release": true
-		},
-		"npm": {
-			"publish": false
-		}
 	},
 	"dependencies": {
 		"@wordpress/components": "^35.0.1",
