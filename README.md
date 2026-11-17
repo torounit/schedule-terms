@@ -6,7 +6,7 @@ Tags:              schedule, term
 Requires at least: 6.8  
 Tested up to:      7.1  
 Requires PHP:      8.2  
-Stable tag:        2.0.1  
+Stable tag:        2.1.0  
 License:           GPLv2 or later  
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -54,7 +54,7 @@ Yes, scheduling can be enabled for any taxonomy that is shown in the admin UI (`
 
 ## Changelog
 
-### Unreleased
+### 2.1.0
 
 * Fix the scheduled time shown in the post editor when the browser and the site are in different timezones.
 * Update dependencies.

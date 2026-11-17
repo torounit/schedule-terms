@@ -9,7 +9,7 @@
  * License URI:     https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:     schedule-terms
  * Domain Path:     /languages
- * Version: 2.0.1
+ * Version: 2.1.0
  * Requires at least: 6.8
  * Requires PHP:      8.2
  *
